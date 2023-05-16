@@ -58,7 +58,7 @@ def InferAdaBoostedRF(df, path):
   ListBodyLevel = ['Body Level 1', 'Body Level 2', 'Body Level 3', 'Body Level 4']
   final = []
   for i in prediction:
-    final.append(ListBodyLevel[int(i)])
+    final.append(ListBodyLevel[int(i) - 1])
   return final
 
 
@@ -72,4 +72,4 @@ predicted = InferAdaBoostedRF(test , 'model.pkl')
 
 #TODO check how to write the preds.txt, will it be stored comma separated, one output per line, space separated, etc.?
 with open('preds.txt', 'w') as f:
-    f.write(predicted)
+    f.write('\n'.join(predicted))
